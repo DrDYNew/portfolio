@@ -15,7 +15,9 @@ import {
   FaDatabase,
   FaHeart,
   FaJava,
+  FaCertificate,
 } from "react-icons/fa";
+import { FiExternalLink } from "react-icons/fi";
 import {
   HiOutlineStar,
   HiOutlineDesktopComputer,
@@ -159,6 +161,65 @@ export default function AboutPage() {
         lang === "en" ? "Model Training" : "Huấn luyện mô hình",
         lang === "en" ? "AI Integration" : "Tích hợp AI",
       ],
+    },
+  ];
+
+  const certifications = [
+    {
+      title: "CertNexus Certified Ethical Emerging Technologist",
+      issuer: "CertNexus",
+      date: "05/2024",
+      tags: ["Leadership", "Critical Thinking", "Machine Learning"],
+      color: "#6366f1",
+    },
+    {
+      title: "User Experience Research and Design",
+      issuer: "University of Michigan",
+      date: "05/2025",
+      tags: ["UX", "User Research", "HCI"],
+      color: "#f59e0b",
+    },
+    {
+      title: "Project Management Principles and Practices",
+      issuer: "University of California, Irvine",
+      date: "01/2025",
+      tags: ["Project Management", "Risk Management", "Leadership"],
+      color: "#10b981",
+    },
+    {
+      title: "Academic English: Writing",
+      issuer: "University of California, Irvine",
+      date: "09/2024",
+      tags: ["Writing"],
+      color: "#3b82f6",
+    },
+    {
+      title: "Software Development Lifecycle",
+      issuer: "University of Minnesota",
+      date: "01/2024",
+      tags: ["Software Engineering", "Testing", "Architecture"],
+      color: "#8b5cf6",
+    },
+    {
+      title: "Web Design for Everybody",
+      issuer: "University of Michigan",
+      date: "10/2023",
+      tags: ["Web Development", "HTML/CSS", "Front-End"],
+      color: "#ec4899",
+    },
+    {
+      title: "Computer Communications",
+      issuer: "University of Colorado System",
+      date: "05/2023",
+      tags: ["Networking", "Network Security", "Architecture"],
+      color: "#14b8a6",
+    },
+    {
+      title: "Academic Skills for University Success",
+      issuer: "The University of Sydney",
+      date: "11/2022",
+      tags: ["Critical Thinking", "Communication", "Problem Solving"],
+      color: "#f97316",
     },
   ];
 
@@ -424,7 +485,7 @@ export default function AboutPage() {
             dark ? "bg-gray-950 border-gray-800" : "bg-white border-gray-200"
           }`}
         >
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2
               className={`text-3xl font-bold text-center mb-4 ${
                 dark ? "text-white" : "text-gray-900"
@@ -442,77 +503,158 @@ export default function AboutPage() {
                 : "Hành trình học tập và những trải nghiệm liên tục đã hình thành kỹ năng của tôi."}
             </p>
 
-            {/* Timeline */}
-            <div className="relative">
-              {/* Vertical line */}
-              <div
-                className={`absolute left-5 top-0 bottom-0 w-px ${
-                  dark ? "bg-gray-800" : "bg-gray-200"
-                }`}
-              />
-
-              <div className="space-y-10">
-                {education.map((item, i) => (
-                  <div key={i} className="relative pl-14">
-                    {/* Icon circle */}
+            {/* Grid 2 columns */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {education.map((item, i) => (
+                <div
+                  key={i}
+                  className={`rounded-2xl p-6 border transition-all hover:-translate-y-1 ${
+                    dark
+                      ? "bg-[#0b1425] border-gray-800 hover:border-gray-700"
+                      : "bg-gray-50 border-gray-200 hover:border-gray-300 shadow-sm hover:shadow-md"
+                  }`}
+                >
+                  <div className="flex items-center gap-3 mb-4">
                     <div
-                      className={`absolute left-0 top-0 w-10 h-10 rounded-full flex items-center justify-center border-2 ${
+                      className={`w-10 h-10 rounded-xl flex items-center justify-center ${
                         dark
-                          ? "bg-[#0b1425] border-gray-700 text-blue-400"
-                          : "bg-white border-gray-200 text-blue-500 shadow-sm"
+                          ? "bg-blue-500/10 text-blue-400"
+                          : "bg-blue-50 text-blue-500"
                       }`}
                     >
-                      <item.icon size={16} />
+                      <item.icon size={18} />
                     </div>
-
-                    <div
-                      className={`rounded-2xl p-6 border transition-colors ${
-                        dark
-                          ? "bg-[#0b1425] border-gray-800"
-                          : "bg-gray-50 border-gray-200"
-                      }`}
-                    >
+                    <div>
                       <h3
-                        className={`text-lg font-bold mb-1 ${
+                        className={`text-base font-bold leading-tight ${
                           dark ? "text-white" : "text-gray-900"
                         }`}
                       >
                         {item.title}
                       </h3>
                       <p
-                        className={`text-sm mb-2 ${
+                        className={`text-xs ${
                           dark ? "text-gray-500" : "text-gray-400"
                         }`}
                       >
                         {item.period}
                       </p>
-                      <p
-                        className={`text-sm mb-4 ${
-                          dark ? "text-gray-400" : "text-gray-600"
-                        }`}
-                      >
-                        {item.description}
-                      </p>
-
-                      {/* Items in 2 columns */}
-                      <div className="grid grid-cols-2 gap-x-8 gap-y-2">
-                        {item.items.map((it, j) => (
-                          <div key={j} className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0" />
-                            <span
-                              className={`text-sm ${
-                                dark ? "text-gray-300" : "text-gray-700"
-                              }`}
-                            >
-                              {it}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
                     </div>
                   </div>
-                ))}
+
+                  <p
+                    className={`text-sm mb-4 ${
+                      dark ? "text-gray-400" : "text-gray-600"
+                    }`}
+                  >
+                    {item.description}
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-x-6 gap-y-1.5">
+                    {item.items.map((it, j) => (
+                      <div key={j} className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0" />
+                        <span
+                          className={`text-sm ${
+                            dark ? "text-gray-300" : "text-gray-700"
+                          }`}
+                        >
+                          {it}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+        {/* ===== CERTIFICATIONS SECTION ===== */}
+        <section className="py-20">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-14">
+              <div
+                className={`inline-flex items-center gap-2 text-sm font-medium px-4 py-1.5 rounded-full border mb-4 ${
+                  dark
+                    ? "text-amber-400 border-amber-500/30"
+                    : "text-amber-600 border-amber-300"
+                }`}
+              >
+                <FaCertificate size={14} />
+                {lang === "en" ? "Credentials" : "Chứng chỉ"}
               </div>
+              <h2
+                className={`text-3xl font-bold mb-4 ${
+                  dark ? "text-white" : "text-gray-900"
+                }`}
+              >
+                {lang === "en" ? "Certifications" : "Chứng chỉ chuyên môn"}
+              </h2>
+              <p
+                className={`max-w-2xl mx-auto ${
+                  dark ? "text-gray-500" : "text-gray-500"
+                }`}
+              >
+                {lang === "en"
+                  ? "Professional certificates from top universities and organizations on Coursera."
+                  : "Các chứng chỉ chuyên nghiệp từ các trường đại học và tổ chức hàng đầu trên Coursera."}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {certifications.map((cert, i) => (
+                <div
+                  key={i}
+                  className={`group rounded-2xl border p-5 transition-all hover:-translate-y-1 ${
+                    dark
+                      ? "bg-[#0b1425] border-gray-800 hover:border-gray-700"
+                      : "bg-white border-gray-200 hover:border-gray-300 shadow-sm hover:shadow-md"
+                  }`}
+                >
+                  {/* Color accent bar */}
+                  <div
+                    className="w-10 h-1 rounded-full mb-4"
+                    style={{ backgroundColor: cert.color }}
+                  />
+                  <h3
+                    className={`text-sm font-bold mb-1 leading-tight ${
+                      dark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    {cert.title}
+                  </h3>
+                  <p
+                    className={`text-xs mb-3 ${
+                      dark ? "text-gray-500" : "text-gray-400"
+                    }`}
+                  >
+                    {cert.issuer}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 mb-3">
+                    {cert.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${
+                          dark
+                            ? "bg-gray-800 text-gray-400"
+                            : "bg-gray-100 text-gray-500"
+                        }`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span
+                      className={`text-xs ${
+                        dark ? "text-gray-600" : "text-gray-400"
+                      }`}
+                    >
+                      {cert.date}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
